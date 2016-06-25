@@ -1,0 +1,26 @@
+{
+  "name": "Ajax_image_upload",
+  "version": "1.0.0",
+  "description": "== README",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "browserify": "^10.2.6",
+    "browserify-incremental": "^3.0.1",
+    "react": "^0.14.8",
+    "react-addons-linked-state-mixin": "^15.1.0",
+    "react-addons-update": "^0.14.8",
+    "react-dom": "^0.14.8",
+    "react-dropzone": "^3.5.0",
+    "reactify": "^1.1.1"
+  },
+  "devDependencies": {}
+}
