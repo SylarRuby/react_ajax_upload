@@ -3,4 +3,4 @@
 
 React = require('react');
 ReactDOM = require('react-dom');
-User = require('./components/User.jsx')
+User = require('./components/User.jsx');

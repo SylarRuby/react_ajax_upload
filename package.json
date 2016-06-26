@@ -15,10 +15,10 @@
   "dependencies": {
     "browserify": "^10.2.6",
     "browserify-incremental": "^3.0.1",
-    "react": "^0.14.8",
+    "react": "^15.1.0",
     "react-addons-linked-state-mixin": "^15.1.0",
-    "react-addons-update": "^0.14.8",
-    "react-dom": "^0.14.8",
+    "react-addons-update": "^15.1.0",
+    "react-dom": "^15.1.0",
     "react-dropzone": "^3.5.0",
     "reactify": "^1.1.1"
   },

@@ -10,7 +10,11 @@ class User < ApplicationRecord
 
 
   def s3_credentials
-  {:bucket => "storklancer", :access_key_id => ENV['AMAZON_ACCESS_KEY_ID'], :secret_access_key => ENV['AMAZON_SECRET_ACCESS_KEY']}
+    {:bucket => ENV['BUCKET_NAME'], :access_key_id => ENV['AMAZON_ACCESS_KEY_ID'], :secret_access_key => ENV['AMAZON_SECRET_ACCESS_KEY']}
+  end
+
+  def avatar_url_medium
+   avatar.url(:medium)
   end
 
 end
