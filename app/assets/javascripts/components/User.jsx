@@ -12,6 +12,9 @@ var User = React.createClass({
 
   updateState: function(data){
     this.setState({ user: data, uploading: false});
+
+    // Reset the file upload input
+    this.refs.file.value = "";
   },
 
   _firstName: function(e) {
@@ -80,7 +83,7 @@ var User = React.createClass({
                   placeholder="Last name"/>
               </div>
             </div>
-            <input type="file" name="user[avatar]" id="user_avatar"/>
+            <input ref="file" type="file" name="user[avatar]" id="user_avatar"/>
           </form>
           {/* Removing the button outside the form prevents a refresh */}
           {this.state.saving ? "Saving..." : <button className="button" onClick={this.onSave}>Save</button>}
