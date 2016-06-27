@@ -6,7 +6,8 @@ var User = React.createClass({
       user: this.props.data,
       firstName: this.props.data.first_name,
       lastName: this.props.data.last_name,
-      saving: false
+      saving: false,
+      files: []
     }
   },
 
