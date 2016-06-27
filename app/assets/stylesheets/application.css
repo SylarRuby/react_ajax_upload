@@ -28,3 +28,15 @@
  .user-details{
    display: flex;
  }
+
+ .hidden{
+   display: none
+ }
+
+ .image-remove{
+   margin-left: 20px;
+ }
+
+.image-preview{
+  margin-bottom: 20px
+}

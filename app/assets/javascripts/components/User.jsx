@@ -7,12 +7,32 @@ var User = React.createClass({
       firstName: this.props.data.first_name,
       lastName: this.props.data.last_name,
       saving: false,
-      files: []
+      files: [],
+      preview: false
     }
   },
 
+  _onSelect: function(){
+    var file = this.refs.file.files[0];
+    var reader = new FileReader();
+    var url = reader.readAsDataURL(file);
+    reader.onloadend = function (e) {
+      this.setState({
+          files: [reader.result], preview: true
+      })
+    }.bind(this);
+  },
+
+  _removeFile: function(num){
+    this.setState({
+      files: this.state.files.filter(function(_, i) { return i !== num}), preview: false
+    });
+    // Reset the file upload input
+    this.refs.file.value = "";
+  },
+
   updateState: function(data){
-    this.setState({ user: data, uploading: false});
+    this.setState({ user: data, uploading: false, files: [], preview: false});
 
     // Reset the file upload input
     this.refs.file.value = "";
@@ -24,6 +44,18 @@ var User = React.createClass({
 
   _lastName: function(e) {
     this.setState({ lastName: e.target.value });
+  },
+
+  _imageRender: function(){
+    var images = this.state.files.map( function(f, x) {
+      return(
+        <div key={x}>
+          <img src={f} width="50" height='50'/>
+          <button className="button small image-remove" onClick={this._removeFile.bind(this, x)}>Remove</button>
+        </div>
+      )
+    }.bind(this));
+    return(<div>{images}</div>)
   },
 
   onSave: function(){
@@ -84,8 +116,13 @@ var User = React.createClass({
                   placeholder="Last name"/>
               </div>
             </div>
-            <input ref="file" type="file" name="user[avatar]" id="user_avatar"/>
+            <input ref="file" type="file" multiple="true" onChange={this._onSelect}/>
+            <input type="hidden" name="user[avatar]" value={this.state.files} multiple="true" />
           </form>
+          <div className={this.state.preview ? "image-preview" : "hidden"}>
+            <h5>Preview:</h5>
+            {this._imageRender()}
+          </div>
           {/* Removing the button outside the form prevents a refresh */}
           {this.state.saving ? "Saving..." : <button className="button" onClick={this.onSave}>Save</button>}
         </div>
